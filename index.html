@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+body
+{
+	padding:20px;
+}
+</style>
+</head>
+<body>
+
+Give me a number: <input type="text" id = "num" width="90px">
+<br>
+Give me a number with two decimal places: <input type="text" id = "dec" width="200px">
+<br>
+Write a sentence (capital letter and period and one space): <input type="text" id = "sentence" width="1000px">
+<br>
+Write a book title: <input type="text" id = "sentence" width="500px">
+<br>
+<button value = "Did it work?" onclick = "check()"></button>
+
+<script>
+function check()
+		{
+		num = $("#num").val();
+		dec = $("#dec").val();
+		sentence = $("#sentence").val();
+		title = $("#title").val();
+
+		console.log(num + dec + sentence);
+
+		//currently checks if password has at least 2 digits, 2 letters, and is at least 6 //characters long. Putting bracket thing on end results in an error.  Maybe I should ask 
+		//stack overflow
+		if (num.match("\d+"))
+		{
+		console.log("Number is correct");
+		//then it sends the username and password to an SQL database.	
+		}
+		else
+		console.log("Number is incorrect")
+
+		if (dec.match("\d+[.]\d{2}"))
+		//checks if it has one or more digits, followed by a period, followed by exactly two digits
+		{
+		console.log("Decimal umber is correct");
+		//then it sends the username and password to an SQL database.	
+		}
+		else
+		{
+			console.log("Decimal number is incorrect")
+		}
+
+		if (sentence.match("^[A-Z]") && sentence.match(".*\\s.*") && sentence.match("[!.?]$"))
+		//Checks if it starts with a capital letter [A-Z], then has any spaces, then ends with 
+		//a punctuation mark.
+		{
+			console.log("Sentence is correct");
+		}
+		else 
+		{
+			console.log("Sentence is incorrect")
+		}
+
+
+		}
+</script>
+</body>
+</html>
