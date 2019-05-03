@@ -20,9 +20,9 @@ Give me a number with two decimal places: <input type="text" id = "dec" width="2
 <br>
 Write a sentence (capital letter and period and one space): <input type="text" id = "sentence" width="1000px">
 <br>
-Write a book title: <input type="text" id = "sentence" width="500px">
+Write a book title: <input type="text" id = "title" width="500px">
 <br>
-<button value = "Did it work?" onclick = "check()"></button>
+<button onclick = "check()">Did it work?</button>
 
 <script>
 function check()
@@ -36,7 +36,7 @@ function check()
 
 		//currently checks if password has at least 2 digits, 2 letters, and is at least 6 //characters long. Putting bracket thing on end results in an error.  Maybe I should ask 
 		//stack overflow
-		if (num.match("\d+"))
+		if (num.match("^[0-9]+$"))
 		{
 		console.log("Number is correct");
 		//then it sends the username and password to an SQL database.	
@@ -44,10 +44,10 @@ function check()
 		else
 		console.log("Number is incorrect")
 
-		if (dec.match("\d+[.]\d{2}"))
-		//checks if it has one or more digits, followed by a period, followed by exactly two digits
+		if (dec.match("^\d+(\.\d{2})?$"))
+		//it's making the . non-optional that is tripping me up
 		{
-		console.log("Decimal umber is correct");
+		console.log("Decimal number is correct");
 		//then it sends the username and password to an SQL database.	
 		}
 		else
@@ -66,6 +66,16 @@ function check()
 			console.log("Sentence is incorrect")
 		}
 
+
+		if (title.match("^[A-Z]") && title.match(".*\\s.*") && title.match("[^.]$"))
+		//needs to check if first letter is capitalized, and every word after a space is capitalized, at the least
+		{
+			console.log("Sentence is correct");
+		}
+		else 
+		{
+			console.log("Sentence is incorrect")
+		}
 
 		}
 </script>
